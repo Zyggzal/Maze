@@ -1,0 +1,110 @@
+[
+    {
+        "id": "1",
+        "name": "Wooden Sword",
+        "description": "A plain wooden sword. Many legendary adventures start with this.",
+        "image": "/images/items/Sword.png"
+    },
+    {
+        "id": "2",
+        "name": "Dragon Fang",
+        "description": "A sword from the land of the dragons. Forged in volcanic flames, its' blade is very durable.",
+        "image": "/images/items/DragonFang.png"
+    },
+    {
+        "id": "3",
+        "name": "Hatchet",
+        "description": "A crude hatchet. Too small for cutting trees, too big for stealth attacks, just right for throwing at enemies.",
+        "image": "/images/items/Hatchet.png"
+    },
+    {
+        "id": "4",
+        "name": "Bag",
+        "description": "A regular bag made of cloth. By itself it's not as exciting as what can be inside.",
+        "image": "/images/items/Bag.png"
+    },
+        {
+        "id": "5",
+        "name": "Brush",
+        "description": "A brush for painting. Legends say The Witch used an implement just like this one to create life.",
+        "image": "/images/items/Brush.png"
+    },    
+    {
+        "id": "6",
+        "name": "Crown",
+        "description": "A golden crown with a red gem imbedded in it. Although it's simply a vanity item, it can paint a target on its' wearer's back...",
+        "image": "/images/items/Crown.png"
+    },
+    {
+        "id": "7",
+        "name": "Dragon Slayer",
+        "description": "A heavy hatchet engraved with anicent symbols. It is deadly on it's own, but it's power grows even further when bathed in primal flame.",
+        "image": "/images/items/DragonSlayer.png"
+    },
+    {
+        "id": "8",
+        "name": "Gauntlet",
+        "description": "A steel gauntlet. Leaves no doubt its' wearer rules the battlefield with an iron fist!",
+        "image": "/images/items/Gauntlet.png"
+    },
+    {
+        "id": "9",
+        "name": "Hourglass",
+        "description": "An old looking hourglass, except instead of sand, it's filled with water. What would happen if you froze it?",
+        "image": "/images/items/Hourglass.png"
+    },
+    {
+        "id": "10",
+        "name": "Key",
+        "description": "A strange key. Only the stars know what it has locked... and what it may release.",
+        "image": "/images/items/Key.png"
+    },
+    {
+        "id": "11",
+        "name": "A Poison Vile",
+        "description": "A single drop of the liguid inside can dissolve anything. And if you were to use a higher concentration..",
+        "image": "/images/items/Poison.png"
+    },
+    {
+        "id": "12",
+        "name": "A Potion Vile",
+        "description": "A peculiar nurce's concotion. It is supposed to heal, but the effects... may vary.",
+        "image": "/images/items/Potion.png"
+    },
+    {
+        "id": "13",
+        "name": "Script",
+        "description": "The fate of this world is already written in ink. Who is the author? Why would that matter?",
+        "image": "/images/items/Script.png"
+    },
+    {
+        "id": "14",
+        "name": "Shield",
+        "description": "In actuality, it is a lid of a wine barrel. But if it gets the job done, that's all that matters.",
+        "image": "/images/items/Shield.png"
+    },
+    {
+        "id": "15",
+        "name": "Dragon Wing",
+        "description": "Dragons have not taken their true form for so long, most of them have forgotten what it looks like. This acient wing is the only remaining reminder of it.",
+        "image": "/images/items/Wing.png"
+    },
+    {
+        "id": "16",
+        "name": "Piercer",
+        "description": "An old and worn down looking sword. It was forged a few centuries ago and was passed down from generation to generation. Its' durability is proof of the Dawn Forge's smiths' skills.",
+        "image": "/images/items/Piercer.png"
+    },
+    {
+        "id": "17",
+        "name": "Scooper",
+        "description": "A strange sword primarily used by the Witchkin of The Swamps. Its' weird shape allows it to be a weapon and a kitchen utensil at the same time.",
+        "image": "/images/items/Script.png"
+    },
+    {
+        "id": "18",
+        "name": "Edge of Time",
+        "description": "Pick it up and look me in the eyes, dear traveller. There, at the edge of time, you'll see those just like you, those for whom Time has stopped its' course. Will you be any different?",
+        "image": "/images/items/TimeEdge.png"
+    }
+]

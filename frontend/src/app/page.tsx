@@ -13,13 +13,6 @@ export default function Home() {
       startTyping('Hello, world!', 100, 1000, () => {
         console.log('Typed out the message');
       });
-
-      const login = async () => {
-        const res = await api.Login('valeraslp1@gmail.com', 'popik888');
-        console.log(res);
-      }
-
-      login();
     }, 2000);
 
     return () => {

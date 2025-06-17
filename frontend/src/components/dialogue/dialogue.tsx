@@ -13,7 +13,7 @@ export default function Dialogue({ dialogueId, className, buttonStyle, talkerSty
     onEnd?: () => void
 }) {
     const { output, startTyping } = useTyper();
-    const [chunks, setChunks] = useState<LineChunk[]>();
+    const [chunks, setChunks] = useState<LineChunk[]|null>();
     const [linePointer, setLinePointer] = useState({ chunk: 0, line: 0 });
     const [showSkipButton, setShowSkipButton] = useState(false);
 

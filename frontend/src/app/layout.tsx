@@ -4,6 +4,7 @@ import "./globals.css";
 import DialogueProvider, { DialogueContext } from "@/contexts/dialogue";
 import ItemProvider from "@/contexts/items";
 import MainHeader from "@/components/headers/main-header";
+import UserProvider from "@/contexts/user";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,10 +33,12 @@ export default function RootLayout({
       >
         <DialogueProvider>
           <ItemProvider>
+            <UserProvider>
             <MainHeader/>
-            <div className="pt-30">
-              {children}
-            </div>
+              <div className="pt-30 h-full">
+                {children}
+              </div>
+            </UserProvider>
           </ItemProvider>
         </DialogueProvider>
       </body>

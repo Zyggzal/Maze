@@ -1,15 +1,19 @@
 'use client';
 
-import Form from "@/components/from/form"
+import Form from "@/components/form/form"
 import { UserContext } from "@/contexts/user";
 import { TUserContext } from "@/types/auth";
+import { useRouter } from "next/navigation";
 import { useContext } from "react";
 
 export default function RegisterForm() {
     const { register } = useContext(UserContext) as TUserContext;
+    const router = useRouter();
 
     const onFormSubmit = async (values: any) => {
-        await register(values.login, values.email, values.password);
+        if(await register(values.login, values.email, values.password)) {
+            router.replace('/');
+        }
     }
 
     return <Form

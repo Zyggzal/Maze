@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function FriendlyEyes({ className, width = 500, height = 350, interval = 800 } : { 
+export default function FriendlyEyes({ className, width = 1555, height = 1170, interval = 800 } : { 
     className?: string, 
     width?: number, 
     height?: number,
@@ -28,11 +28,12 @@ export default function FriendlyEyes({ className, width = 500, height = 350, int
 
     return <div className={className}>
         <Image
+            priority={true}
             src='/images/Eyes.png'
             alt="Friendly eyes"
             width={width}
             height={height}
-            className={`transform translate-x-${translate.x} translate-y-${translate.y}`}
+            className={`transform translate-x-${translate.x} translate-y-${translate.y} w-150 h-auto`}
             />
     </div>
 }

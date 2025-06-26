@@ -8,5 +8,6 @@ export type Item = {
 export type TItemContext = {
     items: Item[] | null
     getItemById: (id: string) => Item | null,
-    getItemsByIds: (ids: string[]) => Item[] | null
+    getItemsByIds: (ids: string[]) => Item[] | null,
+    getItemsByUserId: (id: string) => Promise<Item[] | null>
 }

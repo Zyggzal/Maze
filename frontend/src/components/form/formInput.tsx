@@ -9,7 +9,6 @@ export default function FormInput({ name, type, placeholder, validate, onValueCh
         type: string,
         placeholder?: string,
         validate?: FormInputValidation
-       // onValidate?: (name: string, errors?: string[]) => void,
         onValueChange?: (value: any, name: string,  errors: string[]) => void
     }
 ) {

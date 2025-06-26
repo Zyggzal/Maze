@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "../../globals.css";
-import "./style.css";
-import Image from "next/image";
 import FoliageBackground from "@/components/foliageBackground/foliageBackground";
 
 export const metadata: Metadata = {

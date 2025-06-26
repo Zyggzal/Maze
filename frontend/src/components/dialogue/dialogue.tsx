@@ -5,11 +5,12 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import { LineChunk, TDialogueContext } from "@/types/dialogue";
 import { DialogueContext } from "@/contexts/dialogue";
 
-export default function Dialogue({ dialogueId, className, buttonStyle, talkerStyle, onEnd } : { 
+export default function Dialogue({ dialogueId, className, buttonStyle, talkerStyle, skipButton, onEnd } : { 
     dialogueId: string,
     className?: string, 
     buttonStyle?: string, 
     talkerStyle?: string, 
+    skipButton?: boolean,
     onEnd?: () => void
 }) {
     const { output, startTyping } = useTyper();
@@ -32,7 +33,10 @@ export default function Dialogue({ dialogueId, className, buttonStyle, talkerSty
     useEffect(() => {
         if(!chunks || !currentChunk) return;
 
-        startTyping(currentChunk.lines[linePointer.line], currentChunk.cadence, 0, () => setShowSkipButton(true));
+        startTyping(currentChunk.lines[linePointer.line], currentChunk.cadence, 0, () => {
+            if(skipButton === false && onEnd) onEnd();
+            else setShowSkipButton(true)
+        });
     }, [linePointer, chunks]);
 
     const showLine = () => {

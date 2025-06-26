@@ -4,22 +4,23 @@ import { FormField } from "@/types/form";
 import FormInput from "./formInput"
 import { useMemo, useState } from "react";
 
-export default function Form({ className, fields, action } :
+export default function Form({ className, fields, formAction } :
     {
         className: string,
-        action: (values: any) => void,
+        formAction: (values: any) => void,
         fields: FormField[]
     }
 ) {
     const [values, setValues] = useState<any>({});
     const [formErrors, setFormErrors] = useState<{ [key: string]: string[] }>({});
+    //const [state, action, pending] = useActionState(formAction)
 
     const isValid = useMemo<boolean>(() => {
         const errorValues = Object.values(formErrors);
         return errorValues.length != 0 && errorValues.every(e => e.length === 0);
     }, [formErrors]);
 
-    const onFormVlaueChange = (value: any, name: string, errors: string[]) => {
+    const onFormValueChange = (value: any, name: string, errors: string[]) => {
         setValues((prev: any) => {
             const next = prev;
             next[name] = value;
@@ -35,7 +36,10 @@ export default function Form({ className, fields, action } :
         });
     }
 
-    return <form action={() => action(values)} className={className}>
+    return <form onSubmit={(e) => {
+        e.preventDefault();
+        formAction(values);
+    }} className={className}>
         {
             fields.map((field: FormField) => {
                 return <FormInput
@@ -44,7 +48,7 @@ export default function Form({ className, fields, action } :
                     placeholder={field.placeholder} 
                     type={field.type}
                     validate={field.validate}
-                    onValueChange={onFormVlaueChange}/>
+                    onValueChange={onFormValueChange}/>
             })
         }
         <button className="px-8 py-3 rounded-lg bg-black/60 border-1 border-transparent not-disabled:hover:border-white hover:bg-black disabled:bg-gray-800/40 disabled:text-gray-400" type="submit" disabled={!isValid}>Submit</button>

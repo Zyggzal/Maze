@@ -1,55 +1,64 @@
 'use client';
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { TUserContext, User } from "@/types/auth";
-import useAPI from "@/hooks/api";
-import Cookies  from 'js-cookie';
+import { PopupContext } from "./popup";
+import { TPopupContext } from "@/types/popup";
+import { getStoredUser, Login, Logout, Register } from "@/services/auth";
 
 export const UserContext = createContext<TUserContext|null>(null);
 
-const UserProvider = ({ children } : { children: React.ReactNode }) => {
-    const api = useAPI();
+const UserProvider = ({ children } : { 
+    children: React.ReactNode
+}) => {
+    const { showPopup } = useContext(PopupContext) as TPopupContext;
+
     const [user, setUser] = useState<User|null>(null);
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false); 
 
-    useEffect(() => {
-        const cookieUser = Cookies.get('user');
-
-        if(cookieUser) {
-            setUser(JSON.parse(cookieUser));
+    const getUserFromSession = async () => {
+        const sessionUser = await getStoredUser();
+        if(sessionUser.loggedIn) {
+            setUser(sessionUser.data);
             setIsLoggedIn(true);
         }
+    };
+
+    useEffect(() => {
+        getUserFromSession();
     }, []);
 
-    const addUserToStorage = (user: User) => {
-        setUser(user);
-        Cookies.set('user', JSON.stringify(user), {
-                path: '/',
-                expires: 2
-        });
-        setIsLoggedIn(true);
-    }
-
     const login = async (email: string, password: string) => {
-        const res = await api.Login(email, password);
+        const res = await Login(email, password);
 
-        if(res.status === 200) {
-            addUserToStorage(res.data);
+        if(res.success) {
+            getUserFromSession();
+            return true;
         }
+        else {
+            showPopup(res.error || '', 'Login error', 5000);
+        }
+
+        return false;
     }
 
-    const logout = () => {
-        Cookies.remove('user');
-        setUser(null);
+    const logout = async () => {
+        await Logout();
         setIsLoggedIn(false);
     }
 
     const register = async (login: string, email: string, password: string) => {
-        const res = await api.Register(login, email, password);
+        const res = await Register(login, email, password);
 
-        if(res.status === 200) {
-            addUserToStorage(res.data.user);
+        if(res.success) {
+            getUserFromSession();
+            return true;
         }
+        else {
+            showPopup(res.error || '', 'Registration error', 5000);
+        }
+
+        return false;
     }
 
     return (

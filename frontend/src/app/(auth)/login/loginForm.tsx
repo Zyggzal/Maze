@@ -1,15 +1,19 @@
 'use client';
 
-import Form from "@/components/from/form"
+import Form from "@/components/form/form"
 import { UserContext } from "@/contexts/user";
 import { TUserContext } from "@/types/auth";
+import { useRouter } from "next/navigation";
 import { useContext } from "react";
 
 export default function LoginForm() {
     const { login } = useContext(UserContext) as TUserContext;
+    const router = useRouter();
 
     const onFormSubmit = async (values: any) => {
-        await login(values.email, values.password);
+        if(await login(values.email, values.password)) {
+            router.replace('/');
+        }
     }
 
     return <Form
@@ -33,6 +37,6 @@ export default function LoginForm() {
                         }
                     }
                 ]}
-                action={onFormSubmit}
+                formAction={onFormSubmit}
             />;
 };

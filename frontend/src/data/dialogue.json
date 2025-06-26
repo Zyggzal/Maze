@@ -23,5 +23,22 @@
                 "...will not go unnoticed."
             ]
         }
+    ],
+    "not-found-1": [
+        {
+            "cadence": 50,
+            "lines": [
+                "Did you take a wrong corner or two...?"
+            ]
+        }
+    ],
+    "not-found-2": [
+        {
+            "cadence": 100,
+            "lines": [
+                "No? How curious.",
+                "Come then."
+            ]
+        }
     ]
 }

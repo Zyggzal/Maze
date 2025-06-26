@@ -1,12 +1,14 @@
 'use client';
 
-import useAPI from "@/hooks/api";
+import { PopupContext } from "@/contexts/popup";
 import useTyper from "@/hooks/typer";
-import { useEffect } from "react";
+import { TPopupContext } from "@/types/popup";
+import { useContext, useEffect, useState } from "react";
 
 export default function Home() {
   const { output, startTyping } = useTyper();
-  const api = useAPI();
+  const { showPopup } = useContext(PopupContext) as TPopupContext;
+  const [inputText, setInputText] = useState('');
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -21,15 +23,23 @@ export default function Home() {
   }, []);
 
   const onTypeButtonClick = () => {
-        startTyping(prompt('what to type?') || '', 300, 1000, () => {
+      startTyping(inputText, 300, 1000, () => {
         console.log('Typed out the message');
       });
-  }
+  };
+
+   const onPopupButtonClick = () => {
+      showPopup(inputText, 'Your Input');
+  };
 
   return (
     <>
-      {output}
-      <button onClick={onTypeButtonClick}>Type message</button>
+      <label>Input text: <input type="text" onChange={(e)=>setInputText(e.target.value)}/></label>
+      <div>
+        <button onClick={onTypeButtonClick}>Type inputed message</button>
+        <h1>  {output}</h1>
+      </div>
+      <button onClick={onPopupButtonClick}>Show text in popup</button>
     </>
   );
-}
+};

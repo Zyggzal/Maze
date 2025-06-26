@@ -1,5 +1,5 @@
 export type User = {
-    id: string,
+    _id: string,
     email: string,
     login: string
 };
@@ -7,8 +7,8 @@ export type User = {
 export type TUserContext = {
     user: User|null,
     isLoggedIn: boolean,
-    login: (email: string, password: string) => void,
-    register: (login: string, email: string, password: string) => void,
+    login: (email: string, password: string) => Promise<boolean>,
+    register: (login: string, email: string, password: string) => Promise<boolean>,
     logout: () => void
 };
 

@@ -95,7 +95,7 @@ module.exports = {
             if(!userId) throw 'No user id given.';
 
             const user = await User.findById(userId).populate('items');
-
+            
             if(!user) throw 'User not found';
 
             res.status(200).json({ items: user.items });

@@ -20,11 +20,12 @@ export default function AuthFormsContainer() {
             text={ isLogin ? "Register" : "Login" }
             onClick={() => setIsLogin(prev => !prev)}/>
         <Image
+            priority={true}
             className="absolute z-1 bottom-0"
             src='/images/backgrounds/auth/Book.png'
             alt="login form book background"
-            height={400}
-            width={1000}
+            height={360}
+            width={1008}
         />
     </div> 
 };
